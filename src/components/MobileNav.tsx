@@ -20,7 +20,6 @@ const MobileNav = () => {
         {!isOpen ? <Menu /> : <X />}
       </div>
 
-      {/* Utilisation des classes d'affichage conditionnelles pour afficher ou masquer le menu mobile */}
       <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
         <nav className="rounded-md bg-slate-800 p-2 transition-all z-50 ">
           {navLinks.map((link, index) => (
