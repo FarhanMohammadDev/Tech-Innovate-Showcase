@@ -5,6 +5,7 @@ import { ArrowRightCircle, MoveRight } from "lucide-react";
 import Heading from "@/components/Heading";
 import Button from "@/components/Button";
 import Link from 'next/link';
+import Image from "next/image";
 export default function Home() {
   return (
     <>
