@@ -20,7 +20,7 @@ const MobileNav = () => {
         {!isOpen ? <Menu /> : <X />}
       </div>
 
-      <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
+      <div className={`md:hidden ${isOpen ? "block absolute w-full top-20 left-0 right-0 " : "hidden"}`}>
         <nav className="rounded-md bg-slate-800 p-2 transition-all z-50 ">
           {navLinks.map((link, index) => (
             <Link
