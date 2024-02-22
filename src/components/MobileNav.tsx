@@ -19,26 +19,22 @@ const MobileNav = () => {
       >
         {!isOpen ? <Menu /> : <X />}
       </div>
-      <figure
-        className={`absolute rounded-md right-2 origin-top top-20 ${
-          isOpen
-            ? "scale-y-100 opacity-100 visible"
-            : "scale-y-50 opacity-0 hidden"
-        } w-full text-center bg-slate-800 p-2 transition-all z-50`}
-      >
-        <nav className="w-full h-full flex flex-col space-y-2 capitalize font-normal tracking-wide">
+
+      {/* Utilisation des classes d'affichage conditionnelles pour afficher ou masquer le menu mobile */}
+      <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
+        <nav className="rounded-md bg-slate-800 p-2 transition-all z-50 ">
           {navLinks.map((link, index) => (
             <Link
               key={index}
-              href={ link==="home" ? "/" : `${link}`}
-              className="py-1 px-2 transition-all rounded-md hover:bg-slate-700 hover:text-sky-400"
+              href={link === "home" ? "/" : `${link}`}
+              className="block py-1 px-2 rounded-md hover:bg-slate-700 hover:text-sky-400"
               onClick={toggleMenu}
             >
               {link}
             </Link>
           ))}
         </nav>
-      </figure>
+      </div>
     </>
   );
 };
