@@ -1,8 +1,25 @@
+"use client"
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import { MoveRight } from "lucide-react";
+import { sendMail } from "@/service/mail";
+import { useState } from "react";
+
 
 const Contact = () => {
+  const [formData,setFormData] = useState({
+    from:"",
+    name :"",
+    subject:"",
+    body:"",
+  })
+  async function handleSubmit(event:any) {
+    event.preventDefault();
+    console.log(formData);
+    await sendMail(formData)
+
+};
+
+
   return (
     <section
       id="contact"
@@ -16,18 +33,27 @@ const Contact = () => {
             Boost productivity and streamline collaboration. Get started today!
           </p>
         </div>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
+            onChange={(e)=>setFormData({...formData,name:e.target.value})}
             type="text"
             placeholder="Your Name"
             className="rounded-md bg-slate-700 px-4 py-2 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           />
           <input
+          onChange={(e)=>setFormData({...formData,from:e.target.value})}
             type="email"
             placeholder="Your Email"
             className="rounded-md bg-slate-700 px-4 py-2 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
           />
+          <input
+            onChange={(e)=>setFormData({...formData,subject:e.target.value})}
+            type="text"
+            placeholder="subject"
+            className="rounded-md bg-slate-700 px-4 py-2 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
+          />
           <textarea
+            onChange={(e)=>setFormData({...formData,body:e.target.value})}
             placeholder="Your Message"
             rows={4}
             className="rounded-md bg-slate-700 px-4 py-2 text-white border border-transparent focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
